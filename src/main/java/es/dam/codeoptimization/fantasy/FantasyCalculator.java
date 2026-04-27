@@ -13,11 +13,22 @@ import es.dam.codeoptimization.PlayerStats;
  */
 public class FantasyCalculator {
 
+    /**
+     * Calculates the score achieved by a player according to his stats from a match.
+     * @param stats the statistics done by the player in a match: goals scored, assists
+     * @return the score recieved according to his stats.
+     * @author Oscar
+     */
     public static int calculatePoints(PlayerStats stats) {
         return calculateCommonPoints(stats) 
                 + calculatePointsByPosition(stats);
     }
-
+    /**
+     * Same as the class calculatePoints but this clas is by position.
+     * @param stats the statistics done by the player according to his position
+     * @return the score recieved according to his position.
+     * @author Oscar
+     */
     private static int calculatePointsByPosition(PlayerStats stats) {
         final String GOALKEEPER_STRING = "PORTERO";
         final String DEFENCE_STRING = "DEFENSA";
@@ -43,7 +54,12 @@ public class FantasyCalculator {
         }
         return points;
     }
-
+    /**
+     * Calculate the points in common but not about the position.
+     * @param stats the statistic that all the players will have.
+     * @return the score according to the things he did in the match.
+     * @author Oscar
+     */
     private static int calculateCommonPoints(PlayerStats stats) {
         return calculateMinutesPlayed(stats.minutes)
                 + calculateYellowCard(stats.yellowCard)
